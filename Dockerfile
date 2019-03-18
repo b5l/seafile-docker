@@ -76,3 +76,4 @@ RUN apt-get -y remove build-essential \
            /download-seafile.py
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
+VOLUME [ "/opt/data" ]
