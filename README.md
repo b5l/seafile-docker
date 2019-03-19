@@ -5,6 +5,11 @@ As seafile is automatically configured using docker build arguments, this should
 
 A python script is used to download the latest version of seafile, so unless they make breaking changes to the seafile configuration or the download page, this should always work fine. I will try to keep this updated, but pull requests are always welcome.
 
+**Pull:**
+```bash
+docker pull redprog/seafile
+```
+
 ## Prerequisites
 For the following to work, you need to spin up a temporary seafile instance. It's not necessary to configure volumes for this.
 
