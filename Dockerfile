@@ -63,6 +63,17 @@ RUN tar xfz seafile-server_*.tar.gz && \
     bash "$(pwd)/seafile.sh" start && \
     printf  "${email}\n${password}\n${password}\n" | bash "$(pwd)/seahub.sh" start
 
+RUN printf "CACHES = { \n\
+    'default': { \n\
+        'BACKEND': 'django_pylibmc.memcached.PyLibMCCache', \n\
+        'LOCATION': '/var/run/memcached.sock', \n\
+    }, \n\
+    'locmem': { \n\
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache', \n\
+    }, \n\
+} \n\
+COMPRESS_CACHE_BACKEND = 'locmem'" >> /opt/seafile/conf/seahub_settings.py
+
 # Cleanup
 RUN apt-get -y remove build-essential \
                       python-dev \
